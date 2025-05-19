@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thaut Panel Login</title>
+  <!-- React and ReactDOM from CDN -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <!-- Babel for JSX -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <!-- Lottie player CDN -->
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #181A20;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    // Thaut.ai inspired color palette
+    const thautColors = {
+      background: '#181A20',
+      card: '#23262F',
+      accent: '#00E1D6',
+      accentHover: '#00BFAE',
+      inputBg: '#23262F',
+      inputBorder: '#393E4B',
+      text: '#fff',
+      textSecondary: '#A3A6B3',
+      border: '#393E4B',
+      error: '#E53935',
+      gradient: 'linear-gradient(90deg, #00E1D6 0%, #00BFAE 100%)',
+      shadow: '0 4px 24px rgba(0,225,214,0.08)',
+    };
+
+    function LoginPage() {
+      const [username, setUsername] = React.useState('');
+      const [password, setPassword] = React.useState('');
+      const [error, setError] = React.useState('');
+      const [hover, setHover] = React.useState(false);
+
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        setError('Login functionality not implemented yet.');
+      };
+
+      return (
+        <div style={{
+          minHeight: '100vh',
+          background: thautColors.background,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
+          {/* Lottie animation instead of logo */}
+          <lottie-player
+            src="media/infinite_animation.json"
+            background="transparent"
+            speed="1"
+            style={{ width: 220, height: 220, marginBottom: -20 }}
+            loop
+            autoplay
+          ></lottie-player>
+          <form onSubmit={handleSubmit} style={{
+            background: thautColors.card,
+            borderRadius: 14,
+            boxShadow: thautColors.shadow,
+            padding: 36,
+            width: 340,
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 20,
+            border: `1.5px solid ${thautColors.border}`,
+          }}>
+            <h2 style={{
+              color: thautColors.text,
+              textAlign: 'center',
+              marginBottom: 8,
+              fontWeight: 700,
+              letterSpacing: 1,
+            }}>Sign In</h2>
+            <input
+              type="text"
+              placeholder="Username"
+              value={username}
+              onChange={e => setUsername(e.target.value)}
+              required
+              style={{
+                padding: '12px 16px',
+                borderRadius: 8,
+                border: `1.5px solid ${thautColors.inputBorder}`,
+                outline: 'none',
+                fontSize: 16,
+                background: thautColors.inputBg,
+                color: thautColors.text,
+                marginBottom: 2,
+                transition: 'border 0.2s',
+              }}
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+              required
+              style={{
+                padding: '12px 16px',
+                borderRadius: 8,
+                border: `1.5px solid ${thautColors.inputBorder}`,
+                outline: 'none',
+                fontSize: 16,
+                background: thautColors.inputBg,
+                color: thautColors.text,
+                marginBottom: 2,
+                transition: 'border 0.2s',
+              }}
+            />
+            <button
+              type="submit"
+              style={{
+                background: hover ? thautColors.accentHover : thautColors.accent,
+                backgroundImage: thautColors.gradient,
+                color: '#fff',
+                fontWeight: 700,
+                border: 'none',
+                borderRadius: 8,
+                padding: '12px 0',
+                fontSize: 17,
+                cursor: 'pointer',
+                letterSpacing: 1,
+                transition: 'background 0.3s',
+                marginTop: 8,
+                boxShadow: '0 2px 8px 0 rgba(0,225,214,0.10)',
+              }}
+              onMouseEnter={() => setHover(true)}
+              onMouseLeave={() => setHover(false)}
+            >
+              Sign In
+            </button>
+            {error && <span style={{ color: thautColors.error, textAlign: 'center' }}>{error}</span>}
+          </form>
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<LoginPage />);
+  </script>
+</body>
+</html>
