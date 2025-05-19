@@ -17,6 +17,17 @@
       font-family: 'Segoe UI', Arial, sans-serif;
       background: #181A20;
     }
+    @media (max-width: 600px) {
+      .login-card {
+        width: 95vw !important;
+        padding: 18px !important;
+      }
+      .lottie-anim {
+        width: 140px !important;
+        height: 140px !important;
+        margin-bottom: -10px !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -90,11 +101,12 @@
             src="media/infinite_animation.json"
             background="transparent"
             speed="1"
+            class="lottie-anim"
             style={{ width: 220, height: 220, marginBottom: -20 }}
             loop
             autoplay
           ></lottie-player>
-          <form onSubmit={handleSubmit} style={{
+          <form onSubmit={handleSubmit} className="login-card" style={{
             background: thautColors.card,
             borderRadius: 14,
             boxShadow: thautColors.shadow,
@@ -151,8 +163,7 @@
             <button
               type="submit"
               style={{
-                background: hover ? thautColors.accentHover : thautColors.accent,
-                backgroundImage: thautColors.gradient,
+                backgroundImage: hover ? 'linear-gradient(90deg, #00BFAE 0%, #00E1D6 100%)' : thautColors.gradient,
                 color: '#fff',
                 fontWeight: 700,
                 border: 'none',
